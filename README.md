@@ -43,6 +43,7 @@ If you prefer not to use either of the mentioned dependency managers, you can in
 
 xxx
 
+---
 
 ## Thanks
 This library is heavily inspired by the work of [Khanlou](http://khanlou.com/2016/04/decoding-json/)
