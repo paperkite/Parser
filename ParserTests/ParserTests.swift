@@ -9,27 +9,110 @@
 import XCTest
 @testable import Parser
 
+enum Type: String {
+    case Female = "female"
+    case Male = "male"
+}
+
+class Employee: 🔨 {
+    
+    let name: String
+    let type: Type
+
+    required init?(jsonDictionary: [String: AnyObject]) {
+        
+        let parser = Parser(dictionary: jsonDictionary)
+
+        do {
+            self.name = try parser.fetch("name")
+            self.type = try parser.fetch("type") {  Type(rawValue: $0) }
+            
+        } catch let error {
+            print(error)
+            return nil
+        }
+    }
+
+}
+
+class Company: 🔨 {
+    
+    let id: String
+    let name: String
+    let age: Int
+    let codingEnabled: Bool
+    let coowner: String?
+    let numberOfEmployee: Int
+    let averageAgeEmployee: Int?
+    let team: [Employee]
+    
+    required init?(jsonDictionary: [String: AnyObject]) {
+        
+        let parser = Parser(dictionary: jsonDictionary)
+        
+        do {
+            self.id = try parser.fetch("id")
+            self.name = try parser.fetch("name")
+            self.age = try parser.fetch("age")
+            self.codingEnabled = try parser.fetch("coding_enabled")
+            self.coowner = try parser.fetchOptional("coowner")
+            self.numberOfEmployee = try parser.fetch(["team","number_employee"])
+            self.averageAgeEmployee = try parser.fetchOptional(["team", "average_age"])
+            self.team = try parser.fetchArray(["team","list"]) { Employee(jsonDictionary: $0) }
+
+        } catch let error {
+            print(error)
+            return nil
+        }
+    }
+
+}
+
 class ParserTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    let validJsonDictionary: [String: AnyObject] = [
+        "id": "2c16035c-9a28-42fc-86c0-e517c70798a3",
+        "name": "PaperKite",
+        "age": 8,
+        "coding_enabled": true,
+        "team": [
+            "number_employee": 2,
+            "average_age": 28,
+            "list": [
+                [
+                    "name": "paul",
+                    "type": "male"
+                ],
+                [
+                    "name": "tom",
+                    "type": "female"
+                ]
+            ]
+        ]
+    ]
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+    func testInitializer() {
+        
+        if let company = Company(jsonDictionary: self.validJsonDictionary) {
+            XCTAssert(company.id == "2c16035c-9a28-42fc-86c0-e517c70798a3")
+            XCTAssert(company.name == "PaperKite")
+            XCTAssert(company.age == 8)
+            XCTAssert(company.codingEnabled == true)
+            XCTAssert(company.numberOfEmployee == 2)
+            XCTAssert(company.averageAgeEmployee == 28)
+
+            if let employeeOne: Employee = company.team[0], let employeeTwo: Employee = company.team[1] {
+                XCTAssert(employeeOne.name == "paul")
+                XCTAssert(employeeOne.type == .Male)
+
+                XCTAssert(employeeTwo.name == "tom")
+                XCTAssert(employeeTwo.type == .Female)
+            } else {
+                XCTFail("Unable to assert employees")
+            }
+            
+        } else {
+            XCTFail("fail to init Company")
         }
     }
     

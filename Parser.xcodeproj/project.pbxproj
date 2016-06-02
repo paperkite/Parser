@@ -10,6 +10,7 @@
 		16ED8B721CFFAD1E00204FA0 /* Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 16ED8B711CFFAD1E00204FA0 /* Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16ED8B791CFFAD1E00204FA0 /* Parser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ED8B6E1CFFAD1E00204FA0 /* Parser.framework */; };
 		16ED8B7E1CFFAD1E00204FA0 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED8B7D1CFFAD1E00204FA0 /* ParserTests.swift */; };
+		16ED8B891CFFAD3C00204FA0 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED8B881CFFAD3C00204FA0 /* Parser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		16ED8B781CFFAD1E00204FA0 /* ParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		16ED8B7D1CFFAD1E00204FA0 /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
 		16ED8B7F1CFFAD1E00204FA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16ED8B881CFFAD3C00204FA0 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				16ED8B711CFFAD1E00204FA0 /* Parser.h */,
 				16ED8B731CFFAD1E00204FA0 /* Info.plist */,
+				16ED8B881CFFAD3C00204FA0 /* Parser.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16ED8B891CFFAD3C00204FA0 /* Parser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +314,7 @@
 		16ED8B831CFFAD1E00204FA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -320,12 +325,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.paperkite.Parser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		16ED8B841CFFAD1E00204FA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
