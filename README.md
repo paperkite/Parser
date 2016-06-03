@@ -26,7 +26,7 @@ $ pod install
 To integrate Parser into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "xxxxx/xxxxxxx"
+github "paperkite/Parser"
 ```
 
 Run `carthage update` to build the framework and drag the built `Parser.framework` into your Xcode project.
