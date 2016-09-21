@@ -140,4 +140,18 @@ public struct Parser {
         return fetched.flatMap(transformation)
     }
     
+    public func fetchOptionalArray<T, U>(key: String, transformation: T -> U?) throws -> [U]? {
+        return try self.fetchOptionalArray([key], transformation: transformation)
+    }
+    
+    public func fetchOptionalArray<T, U>(key: [String], transformation: T -> U?) throws -> [U]? {
+        let fetched: [T]? = try fetchOptional(key)
+        if let fetched = fetched {
+            if fetched.flatMap(transformation).count == 0 {
+                return nil
+            }
+            return fetched.flatMap(transformation)
+        }
+        return nil
+    }
 }

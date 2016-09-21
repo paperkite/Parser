@@ -45,26 +45,32 @@ If you prefer not to use either of the mentioned dependency managers, you can in
 import Parser
 
 struct Company: 🔨 { // 🔨 or Parsable
-    let id: Int
+    let id: String
     let name: String
-    let supportPhoneNumber: String?
-    let ownership: Ownership
-    let hasStore: Bool
-    let nextOpen: OpeningHours
-    let employees: [String]
-
+    let age: Int
+    let codingEnabled: Bool
+    let coowner: String?
+    let numberOfEmployee: Int
+    let averageAgeEmployee: Int?
+    let team: [Employee]
+    let optionalTeam: [Employee]?
+    let optionalTeamNested: [Employee]?
+ 
     required init?(jsonDictionary: [String: AnyObject]) {
         
         let parser = Parser(dictionary: jsonDictionary)
         
         do {
             self.id = try parser.fetch("id")
-            self.name = try parser.fetch(["detail", "site_name"]) // Parse nested objects
-            self.supportPhoneNumber = try parser.fetchOptional("support_phone_number")
-            self.ownership = try parser.fetch("ownership") { Ownership(rawValue: $0) }
-            self.hasStore = try parser.fetch("has_store")
-            self.nextOpen = try parser.fetch("next_open") { OpeningHours(jsonDictionary: $0) }
-            self.hasStore = try parser.fetchArray("employees")
+            self.name = try parser.fetch("name")
+            self.age = try parser.fetch("age")
+            self.codingEnabled = try parser.fetch("coding_enabled")
+            self.coowner = try parser.fetchOptional("coowner")
+            self.numberOfEmployee = try parser.fetch(["team","number_employee"])
+            self.averageAgeEmployee = try parser.fetchOptional(["team", "average_age"])
+            self.team = try parser.fetchArray(["team","list"]) { Employee(jsonDictionary: $0) }
+            self.optionalTeam = try parser.fetchOptionalArray("optional_team") { Employee(jsonDictionary: $0) }
+            self.optionalTeamNested = try parser.fetchOptionalArray(["optional_team_nested", "list"]) { Employee(jsonDictionary: $0) }
         } catch let error {
             print(error)
             return nil
