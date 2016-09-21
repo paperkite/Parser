@@ -11,6 +11,12 @@
 		16ED8B791CFFAD1E00204FA0 /* Parser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ED8B6E1CFFAD1E00204FA0 /* Parser.framework */; };
 		16ED8B7E1CFFAD1E00204FA0 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED8B7D1CFFAD1E00204FA0 /* ParserTests.swift */; };
 		16ED8B891CFFAD3C00204FA0 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED8B881CFFAD3C00204FA0 /* Parser.swift */; };
+		BECBAA301D924CF10024431B /* StubbedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECBAA2F1D924CF10024431B /* StubbedResponse.swift */; };
+		BECBAA321D924D3D0024431B /* companies.json in Resources */ = {isa = PBXBuildFile; fileRef = BECBAA311D924D3D0024431B /* companies.json */; };
+		BECBAA341D924E120024431B /* companies-invalid-age.json in Resources */ = {isa = PBXBuildFile; fileRef = BECBAA331D924E120024431B /* companies-invalid-age.json */; };
+		BECBAA361D924F3F0024431B /* companies-invalid-coding.json in Resources */ = {isa = PBXBuildFile; fileRef = BECBAA351D924F3F0024431B /* companies-invalid-coding.json */; };
+		BECBAA381D9250DB0024431B /* companies-optional.json in Resources */ = {isa = PBXBuildFile; fileRef = BECBAA371D9250DB0024431B /* companies-optional.json */; };
+		BECBAA3A1D9251730024431B /* companies-invalid-enum-value.json in Resources */ = {isa = PBXBuildFile; fileRef = BECBAA391D9251730024431B /* companies-invalid-enum-value.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +37,12 @@
 		16ED8B7D1CFFAD1E00204FA0 /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
 		16ED8B7F1CFFAD1E00204FA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16ED8B881CFFAD3C00204FA0 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		BECBAA2F1D924CF10024431B /* StubbedResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubbedResponse.swift; sourceTree = "<group>"; };
+		BECBAA311D924D3D0024431B /* companies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = companies.json; sourceTree = "<group>"; };
+		BECBAA331D924E120024431B /* companies-invalid-age.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "companies-invalid-age.json"; sourceTree = "<group>"; };
+		BECBAA351D924F3F0024431B /* companies-invalid-coding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "companies-invalid-coding.json"; sourceTree = "<group>"; };
+		BECBAA371D9250DB0024431B /* companies-optional.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "companies-optional.json"; sourceTree = "<group>"; };
+		BECBAA391D9251730024431B /* companies-invalid-enum-value.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "companies-invalid-enum-value.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +97,12 @@
 			children = (
 				16ED8B7D1CFFAD1E00204FA0 /* ParserTests.swift */,
 				16ED8B7F1CFFAD1E00204FA0 /* Info.plist */,
+				BECBAA2F1D924CF10024431B /* StubbedResponse.swift */,
+				BECBAA311D924D3D0024431B /* companies.json */,
+				BECBAA331D924E120024431B /* companies-invalid-age.json */,
+				BECBAA351D924F3F0024431B /* companies-invalid-coding.json */,
+				BECBAA371D9250DB0024431B /* companies-optional.json */,
+				BECBAA391D9251730024431B /* companies-invalid-enum-value.json */,
 			);
 			path = ParserTests;
 			sourceTree = "<group>";
@@ -189,6 +207,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BECBAA321D924D3D0024431B /* companies.json in Resources */,
+				BECBAA381D9250DB0024431B /* companies-optional.json in Resources */,
+				BECBAA341D924E120024431B /* companies-invalid-age.json in Resources */,
+				BECBAA361D924F3F0024431B /* companies-invalid-coding.json in Resources */,
+				BECBAA3A1D9251730024431B /* companies-invalid-enum-value.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BECBAA301D924CF10024431B /* StubbedResponse.swift in Sources */,
 				16ED8B7E1CFFAD1E00204FA0 /* ParserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

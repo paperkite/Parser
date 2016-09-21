@@ -79,52 +79,10 @@ class ParserTests: XCTestCase {
      */
     func testInitializer() {
         
-        let validJsonDictionary: [String: AnyObject] = [
-            "id": "2c16035c-9a28-42fc-86c0-e517c70798a3",
-            "name": "PaperKite",
-            "age": 8,
-            "coding_enabled": true,
-            "team": [
-                "number_employee": 2,
-                "average_age": 28,
-                "list": [
-                    [
-                        "name": "paul",
-                        "type": "contractor"
-                    ],
-                    [
-                        "name": "tom",
-                        "type": "employee"
-                    ]
-                ]
-            ],
-            "optional_team": [
-                [
-                    "name": "rebecca",
-                    "type": "employee"
-                ],
-                [
-                    "name": "nate",
-                    "type": "contractor"
-                ]
-            ],
-            "optional_team_nested": [
-                "number_employee": 2,
-                "average_age": 35,
-                "list": [
-                    [
-                        "name": "patrick",
-                        "type": "contractor"
-                    ],
-                    [
-                        "name": "andrew",
-                        "type": "employee"
-                    ]
-                ]
-            ]
-        ]
+        let data = stubbedResponse(filename: "companies")!
+        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
         
-        if let company = Company(jsonDictionary: validJsonDictionary) {
+        if let company = Company(jsonDictionary: json) {
             XCTAssert(company.id == "2c16035c-9a28-42fc-86c0-e517c70798a3")
             XCTAssert(company.name == "PaperKite")
             XCTAssert(company.age == 8)
@@ -172,29 +130,10 @@ class ParserTests: XCTestCase {
      */
     func testWrongAgeTypeInJSON() {
         
-        // age should be a Int not a string
-        let invalidJsonDictionary: [String: AnyObject] = [
-            "id": "2c16035c-9a28-42fc-86c0-e517c70798a3",
-            "name": "PaperKite",
-            "age": "8", // <---- HERE
-            "coding_enabled": true,
-            "team": [
-                "number_employee": 2,
-                "average_age": 28,
-                "list": [
-                    [
-                        "name": "paul",
-                        "type": "male"
-                    ],
-                    [
-                        "name": "tom",
-                        "type": "female"
-                    ]
-                ]
-            ]
-        ]
+        let data = stubbedResponse(filename: "companies-invalid-age")!
+        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
 
-        let company = Company(jsonDictionary: invalidJsonDictionary)
+        let company = Company(jsonDictionary: json)
         XCTAssertNil(company, "Company should be nil, as age is a string in the JSON")
     }
     
@@ -203,29 +142,10 @@ class ParserTests: XCTestCase {
      */
     func testWrongBoolTypeInJSON() {
         
-        // coding_enabled should be a Bool not a string
-        let invalidJsonDictionary: [String: AnyObject] = [
-            "id": "2c16035c-9a28-42fc-86c0-e517c70798a3",
-            "name": "PaperKite",
-            "age": 8,
-            "coding_enabled": "true", // <---- HERE
-            "team": [
-                "number_employee": 2,
-                "average_age": 28,
-                "list": [
-                    [
-                        "name": "paul",
-                        "type": "male"
-                    ],
-                    [
-                        "name": "tom",
-                        "type": "female"
-                    ]
-                ]
-            ]
-        ]
+        let data = stubbedResponse(filename: "companies-invalid-coding")!
+        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
         
-        let company = Company(jsonDictionary: invalidJsonDictionary)
+        let company = Company(jsonDictionary: json)
         XCTAssertNil(company, "Company should be nil, as coding_enabled is a string in the JSON")
     }
     
@@ -234,29 +154,10 @@ class ParserTests: XCTestCase {
      */
     func testOptionalEmployeeArrayBeingNilInJSON() {
         
-        // no optionalTeam in the JSON
-        let validJsonDictionary: [String: AnyObject] = [
-            "id": "2c16035c-9a28-42fc-86c0-e517c70798a3",
-            "name": "PaperKite",
-            "age": 8,
-            "coding_enabled": true,
-            "team": [
-                "number_employee": 2,
-                "average_age": 28,
-                "list": [
-                    [
-                        "name": "paul",
-                        "type": "employee"
-                    ],
-                    [
-                        "name": "tom",
-                        "type": "contractor"
-                    ]
-                ]
-            ]
-        ]
+        let data = stubbedResponse(filename: "companies-invalid-coding")!
+        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
         
-        if let company = Company(jsonDictionary: validJsonDictionary) {
+        if let company = Company(jsonDictionary: json) {
             XCTAssert(company.id == "2c16035c-9a28-42fc-86c0-e517c70798a3")
             XCTAssert(company.name == "PaperKite")
             XCTAssert(company.age == 8)
@@ -287,53 +188,10 @@ class ParserTests: XCTestCase {
      */
     func testOptionalEmployeeArrayBeingNilWithWrongEnumInJSON() {
         
-        // contactor type is wrong
-        let validJsonDictionary: [String: AnyObject] = [
-            "id": "2c16035c-9a28-42fc-86c0-e517c70798a3",
-            "name": "PaperKite",
-            "age": 8,
-            "coding_enabled": true,
-            "team": [
-                "number_employee": 2,
-                "average_age": 28,
-                "list": [
-                    [
-                        "name": "paul",
-                        "type": "employee"
-                    ],
-                    [
-                        "name": "tom",
-                        "type": "contractor"
-                    ]
-                ]
-            ],
-            "optional_team": [
-                [
-                    "name": "paul",
-                    "type": "werwrwr" // <- wrong value
-                ],
-                [
-                    "name": "tom",
-                    "type": "sfpsdpfosdf" // <- wrong value
-                ]
-            ],
-            "optional_team_nested": [
-                "number_employee": 2,
-                "average_age": 28,
-                "list": [
-                    [
-                        "name": "paul",
-                        "type": "werwrwr" // <- wrong value
-                    ],
-                    [
-                        "name": "tom",
-                        "type": "sfpsdpfosdf" // <- wrong value
-                    ]
-                ]
-            ]
-        ]
+        let data = stubbedResponse(filename: "companies-invalid-enum-value")!
+        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
         
-        if let company = Company(jsonDictionary: validJsonDictionary) {
+        if let company = Company(jsonDictionary: json) {
             XCTAssert(company.id == "2c16035c-9a28-42fc-86c0-e517c70798a3")
             XCTAssert(company.name == "PaperKite")
             XCTAssert(company.age == 8)
