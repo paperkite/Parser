@@ -154,7 +154,7 @@ class ParserTests: XCTestCase {
      */
     func testOptionalEmployeeArrayBeingNilInJSON() {
         
-        let data = stubbedResponse(filename: "companies-invalid-coding")!
+        let data = stubbedResponse(filename: "companies-optional")!
         let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
         
         if let company = Company(jsonDictionary: json) {
@@ -167,10 +167,10 @@ class ParserTests: XCTestCase {
 
             if let employeeOne: Employee = company.team[0], let employeeTwo: Employee = company.team[1] {
                 XCTAssert(employeeOne.name == "paul")
-                XCTAssert(employeeOne.contractType == .Employee)
+                XCTAssert(employeeOne.contractType == .Contractor)
                 
                 XCTAssert(employeeTwo.name == "tom")
-                XCTAssert(employeeTwo.contractType == .Contractor)
+                XCTAssert(employeeTwo.contractType == .Employee)
             } else {
                 XCTFail("Unable to assert employees")
             }
@@ -201,10 +201,10 @@ class ParserTests: XCTestCase {
             
             if let employeeOne: Employee = company.team[0], let employeeTwo: Employee = company.team[1] {
                 XCTAssert(employeeOne.name == "paul")
-                XCTAssert(employeeOne.contractType == .Employee)
+                XCTAssert(employeeOne.contractType == .Contractor)
                 
                 XCTAssert(employeeTwo.name == "tom")
-                XCTAssert(employeeTwo.contractType == .Contractor)
+                XCTAssert(employeeTwo.contractType == .Employee)
             } else {
                 XCTFail("Unable to assert employees")
             }
