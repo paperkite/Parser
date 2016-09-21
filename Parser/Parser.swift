@@ -10,7 +10,7 @@ import Foundation
 
 typealias 🔨 = ParsableObject
 
-struct ParserError: ErrorType {
+struct ParserError: Error {
     let message: String
 }
 
@@ -25,11 +25,11 @@ public struct Parser {
         self.dictionary = dictionary
     }
     
-    public func fetch<T>(key: String) throws -> T {
+    public func fetch<T>(_ key: String) throws -> T {
         return try self.fetch([key])
     }
     
-    public func fetch<T>(keys: [String]) throws -> T {
+    public func fetch<T>(_ keys: [String]) throws -> T {
         
         guard keys.count > 0 else {
             throw ParserError(message: "No specified keys")
@@ -68,11 +68,11 @@ public struct Parser {
         throw ParserError(message: "Unexpected error")
     }
     
-    public func fetchOptional<T>(key: String) throws -> T? {
+    public func fetchOptional<T>(_ key: String) throws -> T? {
         return try self.fetchOptional([key])
     }
     
-    public func fetchOptional<T>(keys: [String]) throws -> T? {
+    public func fetchOptional<T>(_ keys: [String]) throws -> T? {
         
         guard keys.count > 0 else {
             throw ParserError(message: "No specified keys")
@@ -111,7 +111,7 @@ public struct Parser {
         return nil
     }
     
-    public func fetch<T, U>(key: [String], transformation: T -> U?) throws -> U {
+    public func fetch<T, U>(_ key: [String], transformation: (T) -> U?) throws -> U {
         let fetched: T = try fetch(key)
         guard let transformed = transformation(fetched) else {
             throw ParserError(message: "The value \"\(fetched)\" at key \"\(key)\" could not be transformed.")
@@ -119,32 +119,32 @@ public struct Parser {
         return transformed
     }
 
-    public func fetch<T, U>(key: String, transformation: T -> U?) throws -> U {
+    public func fetch<T, U>(_ key: String, transformation: (T) -> U?) throws -> U {
         return try self.fetch([key], transformation: transformation)
     }
     
-    public func fetchOptional<T, U>(key: [String], transformation: T -> U?) throws -> U? {
+    public func fetchOptional<T, U>(_ key: [String], transformation: (T) -> U?) throws -> U? {
         return try self.fetchOptional(key, transformation: transformation)
     }
     
-    public func fetchOptional<T, U>(key: String, transformation: T -> U?) throws -> U? {
+    public func fetchOptional<T, U>(_ key: String, transformation: (T) -> U?) throws -> U? {
         return try self.fetchOptional(key).flatMap(transformation)
     }
     
-    public func fetchArray<T, U>(key: String, transformation: T -> U?) throws -> [U] {
+    public func fetchArray<T, U>(_ key: String, transformation: (T) -> U?) throws -> [U] {
         return try self.fetchArray([key], transformation: transformation)
     }
     
-    public func fetchArray<T, U>(key: [String], transformation: T -> U?) throws -> [U] {
+    public func fetchArray<T, U>(_ key: [String], transformation: (T) -> U?) throws -> [U] {
         let fetched: [T] = try fetch(key)
         return fetched.flatMap(transformation)
     }
     
-    public func fetchOptionalArray<T, U>(key: String, transformation: T -> U?) throws -> [U]? {
+    public func fetchOptionalArray<T, U>(_ key: String, transformation: (T) -> U?) throws -> [U]? {
         return try self.fetchOptionalArray([key], transformation: transformation)
     }
     
-    public func fetchOptionalArray<T, U>(key: [String], transformation: T -> U?) throws -> [U]? {
+    public func fetchOptionalArray<T, U>(_ key: [String], transformation: (T) -> U?) throws -> [U]? {
         let fetched: [T]? = try fetchOptional(key)
         if let fetched = fetched {
             if fetched.flatMap(transformation).count == 0 {
