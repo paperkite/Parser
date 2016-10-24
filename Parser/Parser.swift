@@ -18,7 +18,7 @@ protocol ParsableObject {
     init?(jsonDictionary: [String: AnyObject])
 }
 
-public struct Parser {
+open struct Parser {
     let dictionary: [String: AnyObject]?
     
     public init(dictionary: [String: AnyObject]?) {
