@@ -10,15 +10,15 @@ import Foundation
 
 typealias 🔨 = ParsableObject
 
-struct ParserError: Error {
+public struct ParserError: Error {
     let message: String
 }
 
-protocol ParsableObject {
+public protocol ParsableObject {
     init?(jsonDictionary: [String: AnyObject])
 }
 
-open struct Parser {
+public struct Parser {
     let dictionary: [String: AnyObject]?
     
     public init(dictionary: [String: AnyObject]?) {
