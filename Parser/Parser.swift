@@ -8,13 +8,13 @@
 
 import Foundation
 
-typealias 🔨 = ParsableObject
+public typealias 🔨 = ParsableObject
 
-struct ParserError: ErrorType {
+public struct ParserError: ErrorType {
     let message: String
 }
 
-protocol ParsableObject {
+public protocol ParsableObject {
     init?(jsonDictionary: [String: AnyObject])
 }
 
