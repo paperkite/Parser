@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias 🔨 = ParsableObject
+public typealias 🔨 = ParsableObject
 
 public struct ParserError: Error {
     let message: String
