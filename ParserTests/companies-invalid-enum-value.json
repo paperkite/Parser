@@ -1,0 +1,35 @@
+{
+    "id": "2c16035c-9a28-42fc-86c0-e517c70798a3",
+    "name": "PaperKite",
+    "age": 8,
+    "coding_enabled": true,
+    "team": {
+        "number_employee": 2,
+        "average_age": 28,
+        "list": [{
+                 "name": "paul",
+                 "type": "contractor"
+                 }, {
+                 "name": "tom",
+                 "type": "employee"
+                 }]
+    },
+    "optional_team": [{
+                      "name": "rebecca",
+                      "type": "wrong"
+                      }, {
+                      "name": "nate",
+                      "type": "wrong"
+                      }],
+    "optional_team_nested": {
+        "number_employee": 2,
+        "average_age": 35,
+        "list": [{
+                 "name": "patrick",
+                 "type": "wrong"
+                 }, {
+                 "name": "andrew",
+                 "type": "wrong"
+                 }]
+    }
+}

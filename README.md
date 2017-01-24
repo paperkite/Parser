@@ -1,32 +1,15 @@
-# Parser 🔨 - WORK IN PROGRESS
+# Parser 🔨
+
 A micro library to parse and create your object from a dictionary.
 
 ## Installation
-
-### CocoaPods
-
-To integrate Parser into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
-use_frameworks!
-
-pod 'xxxxxxx'
-```
-
-Then, run the following command:
-
-```bash
-$ pod install
-```
 
 ### Carthage
 
 To integrate Parser into your Xcode project using Carthage, specify it in your `Cartfile`:
 
-```ogdl
-github "paperkite/Parser"
+```
+github "paperkite/Parser" ~> 1.0
 ```
 
 Run `carthage update` to build the framework and drag the built `Parser.framework` into your Xcode project.
@@ -44,7 +27,7 @@ If you prefer not to use either of the mentioned dependency managers, you can in
 ```swift
 import Parser
 
-struct Company: 🔨 { // 🔨 or Parsable
+struct Company: 🔨 { // 🔨 or ParsableObject
     let id: String
     let name: String
     let age: Int
@@ -55,11 +38,11 @@ struct Company: 🔨 { // 🔨 or Parsable
     let team: [Employee]
     let optionalTeam: [Employee]?
     let optionalTeamNested: [Employee]?
- 
+
     required init?(jsonDictionary: [String: AnyObject]) {
-        
+
         let parser = Parser(dictionary: jsonDictionary)
-        
+
         do {
             self.id = try parser.fetch("id")
             self.name = try parser.fetch("name")
@@ -76,7 +59,7 @@ struct Company: 🔨 { // 🔨 or Parsable
             return nil
         }
     }
-    
+
 }
 
 // Wherever you receive JSON data:

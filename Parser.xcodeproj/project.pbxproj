@@ -11,6 +11,12 @@
 		16ED8B791CFFAD1E00204FA0 /* Parser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16ED8B6E1CFFAD1E00204FA0 /* Parser.framework */; };
 		16ED8B7E1CFFAD1E00204FA0 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED8B7D1CFFAD1E00204FA0 /* ParserTests.swift */; };
 		16ED8B891CFFAD3C00204FA0 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED8B881CFFAD3C00204FA0 /* Parser.swift */; };
+		BECBAA301D924CF10024431B /* StubbedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECBAA2F1D924CF10024431B /* StubbedResponse.swift */; };
+		BECBAA321D924D3D0024431B /* companies.json in Resources */ = {isa = PBXBuildFile; fileRef = BECBAA311D924D3D0024431B /* companies.json */; };
+		BECBAA341D924E120024431B /* companies-invalid-age.json in Resources */ = {isa = PBXBuildFile; fileRef = BECBAA331D924E120024431B /* companies-invalid-age.json */; };
+		BECBAA361D924F3F0024431B /* companies-invalid-coding.json in Resources */ = {isa = PBXBuildFile; fileRef = BECBAA351D924F3F0024431B /* companies-invalid-coding.json */; };
+		BECBAA381D9250DB0024431B /* companies-optional.json in Resources */ = {isa = PBXBuildFile; fileRef = BECBAA371D9250DB0024431B /* companies-optional.json */; };
+		BECBAA3A1D9251730024431B /* companies-invalid-enum-value.json in Resources */ = {isa = PBXBuildFile; fileRef = BECBAA391D9251730024431B /* companies-invalid-enum-value.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +37,12 @@
 		16ED8B7D1CFFAD1E00204FA0 /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
 		16ED8B7F1CFFAD1E00204FA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16ED8B881CFFAD3C00204FA0 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		BECBAA2F1D924CF10024431B /* StubbedResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubbedResponse.swift; sourceTree = "<group>"; };
+		BECBAA311D924D3D0024431B /* companies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = companies.json; sourceTree = "<group>"; };
+		BECBAA331D924E120024431B /* companies-invalid-age.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "companies-invalid-age.json"; sourceTree = "<group>"; };
+		BECBAA351D924F3F0024431B /* companies-invalid-coding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "companies-invalid-coding.json"; sourceTree = "<group>"; };
+		BECBAA371D9250DB0024431B /* companies-optional.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "companies-optional.json"; sourceTree = "<group>"; };
+		BECBAA391D9251730024431B /* companies-invalid-enum-value.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "companies-invalid-enum-value.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +97,12 @@
 			children = (
 				16ED8B7D1CFFAD1E00204FA0 /* ParserTests.swift */,
 				16ED8B7F1CFFAD1E00204FA0 /* Info.plist */,
+				BECBAA2F1D924CF10024431B /* StubbedResponse.swift */,
+				BECBAA311D924D3D0024431B /* companies.json */,
+				BECBAA331D924E120024431B /* companies-invalid-age.json */,
+				BECBAA351D924F3F0024431B /* companies-invalid-coding.json */,
+				BECBAA371D9250DB0024431B /* companies-optional.json */,
+				BECBAA391D9251730024431B /* companies-invalid-enum-value.json */,
 			);
 			path = ParserTests;
 			sourceTree = "<group>";
@@ -146,14 +164,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = PaperKite;
 				TargetAttributes = {
 					16ED8B6D1CFFAD1E00204FA0 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					16ED8B771CFFAD1E00204FA0 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -187,6 +207,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BECBAA321D924D3D0024431B /* companies.json in Resources */,
+				BECBAA381D9250DB0024431B /* companies-optional.json in Resources */,
+				BECBAA341D924E120024431B /* companies-invalid-age.json in Resources */,
+				BECBAA361D924F3F0024431B /* companies-invalid-coding.json in Resources */,
+				BECBAA3A1D9251730024431B /* companies-invalid-enum-value.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BECBAA301D924CF10024431B /* StubbedResponse.swift in Sources */,
 				16ED8B7E1CFFAD1E00204FA0 /* ParserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,8 +260,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -283,8 +311,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -304,6 +334,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -315,6 +346,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -327,6 +359,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -334,6 +367,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -345,6 +379,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.paperkite.Parser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -355,6 +390,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.paperkite.ParserTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -365,6 +401,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.paperkite.ParserTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
