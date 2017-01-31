@@ -15,13 +15,13 @@ public struct ParserError: Error {
 }
 
 public protocol ParsableObject {
-    init?(jsonDictionary: [String: AnyObject])
+    init?(jsonDictionary: [String: Any])
 }
 
 public struct Parser {
-    let dictionary: [String: AnyObject]?
+    let dictionary: [String: Any]?
     
-    public init(dictionary: [String: AnyObject]?) {
+    public init(dictionary: [String: Any]?) {
         self.dictionary = dictionary
     }
     
@@ -35,7 +35,7 @@ public struct Parser {
             throw ParserError(message: "No specified keys")
         }
         
-        var currentDictionary: [String: AnyObject]? = self.dictionary
+        var currentDictionary: [String: Any]? = self.dictionary
         
         for key in keys {
             
@@ -57,7 +57,7 @@ public struct Parser {
             }
             
             // check if dictionary
-            guard let nextDictionary = nextValue as? [String: AnyObject] else  {
+            guard let nextDictionary = nextValue as? [String: Any] else  {
                 throw ParserError(message: "The key \"\(key)\" was not a dictionary.")
             }
             
@@ -78,7 +78,7 @@ public struct Parser {
             throw ParserError(message: "No specified keys")
         }
         
-        var currentDictionary: [String: AnyObject]? = self.dictionary
+        var currentDictionary: [String: Any]? = self.dictionary
         
         for key in keys {
             
@@ -100,7 +100,7 @@ public struct Parser {
             }
             
             // check if dictionary
-            guard let nextDictionary = nextValue as? [String: AnyObject] else  {
+            guard let nextDictionary = nextValue as? [String: Any] else  {
                 return nil
             }
             

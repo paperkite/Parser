@@ -19,7 +19,7 @@ class Employee: 🔨 {
     let name: String
     let contractType: ContractType
 
-    required init?(jsonDictionary: [String: AnyObject]) {
+    required init?(jsonDictionary: [String: Any]) {
         
         let parser = Parser(dictionary: jsonDictionary)
 
@@ -48,7 +48,7 @@ class Company: 🔨 {
     let optionalTeam: [Employee]?
     let optionalTeamNested: [Employee]?
 
-    required init?(jsonDictionary: [String: AnyObject]) {
+    required init?(jsonDictionary: [String: Any]) {
         
         let parser = Parser(dictionary: jsonDictionary)
         
@@ -80,7 +80,7 @@ class ParserTests: XCTestCase {
     func testInitializer() {
         
         let data = stubbedResponse(filename: "companies")!
-        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
+        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
         
         if let company = Company(jsonDictionary: json) {
             XCTAssert(company.id == "2c16035c-9a28-42fc-86c0-e517c70798a3")
@@ -131,7 +131,7 @@ class ParserTests: XCTestCase {
     func testWrongAgeTypeInJSON() {
         
         let data = stubbedResponse(filename: "companies-invalid-age")!
-        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
+        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
 
         let company = Company(jsonDictionary: json)
         XCTAssertNil(company, "Company should be nil, as age is a string in the JSON")
@@ -143,7 +143,7 @@ class ParserTests: XCTestCase {
     func testWrongBoolTypeInJSON() {
         
         let data = stubbedResponse(filename: "companies-invalid-coding")!
-        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
+        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
         
         let company = Company(jsonDictionary: json)
         XCTAssertNil(company, "Company should be nil, as coding_enabled is a string in the JSON")
@@ -155,7 +155,7 @@ class ParserTests: XCTestCase {
     func testOptionalEmployeeArrayBeingNilInJSON() {
         
         let data = stubbedResponse(filename: "companies-optional")!
-        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
+        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
         
         if let company = Company(jsonDictionary: json) {
             XCTAssert(company.id == "2c16035c-9a28-42fc-86c0-e517c70798a3")
@@ -189,7 +189,7 @@ class ParserTests: XCTestCase {
     func testOptionalEmployeeArrayBeingNilWithWrongEnumInJSON() {
         
         let data = stubbedResponse(filename: "companies-invalid-enum-value")!
-        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
+        let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
         
         if let company = Company(jsonDictionary: json) {
             XCTAssert(company.id == "2c16035c-9a28-42fc-86c0-e517c70798a3")
