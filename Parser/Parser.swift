@@ -137,7 +137,7 @@ public struct Parser {
     
     public func fetchArray<T, U>(_ key: [String], transformation: (T) -> U?) throws -> [U] {
         let fetched: [T] = try fetch(key)
-        return fetched.flatMap(transformation)
+        return fetched.compactMap(transformation)
     }
     
     public func fetchOptionalArray<T, U>(_ key: String, transformation: (T) -> U?) throws -> [U]? {
@@ -147,10 +147,10 @@ public struct Parser {
     public func fetchOptionalArray<T, U>(_ key: [String], transformation: (T) -> U?) throws -> [U]? {
         let fetched: [T]? = try fetchOptional(key)
         if let fetched = fetched {
-            if fetched.flatMap(transformation).count == 0 {
+            if fetched.compactMap(transformation).count == 0 {
                 return nil
             }
-            return fetched.flatMap(transformation)
+            return fetched.compactMap(transformation)
         }
         return nil
     }
